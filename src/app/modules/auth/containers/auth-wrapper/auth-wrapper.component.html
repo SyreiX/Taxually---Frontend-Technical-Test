@@ -1,0 +1,7 @@
+<tax-login *ngIf="isLogin; else register"></tax-login>
+
+<ng-template #register>
+  <tax-register></tax-register>
+</ng-template>
+
+<a class="mt-3 fs-6 text-primary text-center" (click)="toggleLogin()">{{isLogin ? 'Create an account' : 'Already have an account?'}}</a>
