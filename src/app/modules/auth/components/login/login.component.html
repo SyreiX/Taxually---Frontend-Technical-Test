@@ -1,0 +1,10 @@
+<form [formGroup]="loginForm" class="d-flex flex-column gap-1">
+  <label for="email">Email address: </label>
+  <input id="email" type="text" formControlName="email">
+
+  <label for="password">Password: </label>
+  <input id="password" type="text" formControlName="password">
+
+  <button type="submit" class="btn btn-primary mt-3" [disabled]="!loginForm.valid">Submit</button>
+</form>
+
