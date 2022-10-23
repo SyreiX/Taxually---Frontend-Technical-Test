@@ -9,6 +9,11 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         loadChildren: () => import('./modules/auth/auth.module').then(modules => modules.AuthModule)
+      },
+      {
+        path: 'dashboard',
+        pathMatch: 'full',
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(modules => modules.DashboardModule)
       }
     ]
   }
