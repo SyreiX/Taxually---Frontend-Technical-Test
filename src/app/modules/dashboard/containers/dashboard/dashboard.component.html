@@ -1,0 +1,5 @@
+<input type="file" class="file-upload" (change)="upload($event.target)">
+
+<ng-container *ngFor="let file of files$ | async">
+    <span>{{file.name}}</span>
+</ng-container>
