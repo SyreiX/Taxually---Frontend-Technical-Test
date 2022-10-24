@@ -13,6 +13,7 @@ const routes: Routes = [
       {
         path: 'dashboard',
         pathMatch: 'full',
+        // TODO: AuthGuard
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(modules => modules.DashboardModule)
       }
     ]

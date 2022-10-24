@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthWrapperComponent } from './containers/auth-wrapper/auth-wrapper.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 
 const routes = [
   {

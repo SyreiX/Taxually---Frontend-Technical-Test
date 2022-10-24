@@ -20,12 +20,12 @@ const routes = [
     FileListComponent,
     FileGroupComponent,
   ],
-	imports: [
-		CommonModule,
-		RouterModule.forChild(routes),
-		NgbAccordionModule,
-		FormsModule
-	]
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    NgbAccordionModule,
+    FormsModule
+  ]
 })
 export class DashboardModule {
 }
