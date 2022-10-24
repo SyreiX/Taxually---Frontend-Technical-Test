@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { FileService } from '../../services/file.service';
 import { File } from '../../definitions/file';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tax-dashboard',
@@ -15,7 +16,7 @@ export class DashboardComponent {
 
   viewMode: BehaviorSubject<string> = new BehaviorSubject<string>('list');
 
-  constructor(private fileService: FileService) {
+  constructor(private fileService: FileService, private router: Router) {
   }
 
   onFileSelectChange(target: any): void {
@@ -33,5 +34,9 @@ export class DashboardComponent {
 
   setViewMode(viewMode: string): void {
     this.viewMode.next(viewMode);
+  }
+
+  logout(): void {
+    this.router.navigate( ['']);
   }
 }
