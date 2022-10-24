@@ -1,0 +1,7 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let group of objectKeys(groups)" [title]="group">
+    <ng-template ngbPanelContent>
+      <tax-file-list [files]="groups[group]" (delete)="delete.emit($event)"></tax-file-list>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

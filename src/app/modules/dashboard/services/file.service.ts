@@ -32,4 +32,8 @@ export class FileService {
         }
       });
   }
+
+  public deleteFile(key: string): void {
+    this.http.delete(`${API_URL}/${key}`).subscribe();
+  }
 }

@@ -1,5 +1,13 @@
 <input type="file" class="file-upload" (change)="upload($event.target)">
 
-<ng-container *ngFor="let file of files$ | async">
-    <span>{{file.name}}</span>
+<ng-container *ngIf="files$ | async as files">
+  <ng-container *ngIf="files.length">
+    <button class="btn btn-sm" (click)="setViewMode('list')">List</button>
+    <button class="btn btn-sm" (click)="setViewMode('group')">Group</button>
+
+    <ng-container [ngSwitch]="viewMode | async">
+      <tax-file-list [files]="files" *ngSwitchCase="'list'" (delete)="delete($event)"></tax-file-list>
+      <tax-file-group [files]="files" *ngSwitchCase="'group'" (delete)="delete($event)"></tax-file-group>
+    </ng-container>
+  </ng-container>
 </ng-container>
