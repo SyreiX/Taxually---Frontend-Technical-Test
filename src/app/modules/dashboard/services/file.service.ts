@@ -21,10 +21,14 @@ export class FileService {
 
   public fetchFiles(): void {
     // @ts-ignore
-    return this.http.get(API_URL).pipe(map(data => data.nodes)).pipe(take(1)).subscribe((files: File[]) => this.files$.next(files));
+    this.http.get(API_URL).pipe(map(data => data.nodes)).pipe(take(1)).subscribe((files: File[]) => this.files$.next(files));
   }
 
   public uploadFiles(files: any): void {
+    if (!files) {
+      return;
+    }
+
     const formData = new FormData();
     // @ts-ignore
     Array.from(files).forEach(file => formData.append('file', file));
@@ -34,7 +38,11 @@ export class FileService {
         if (event.type === HttpEventType.UploadProgress) {
           // Progress
         } else if (event instanceof HttpResponse) {
-          // Done
+          console.log(event);
+          const file: File = event.body as File;
+          const files = [...this.files$.value];
+          files.push(file);
+          this.files$.next(files);
         }
       });
   }

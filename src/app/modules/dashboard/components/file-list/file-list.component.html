@@ -10,7 +10,7 @@
   <tbody>
   <tr *ngFor="let file of files">
     <td>{{ file.name }}</td>
-    <td>{{ file.size | number }}</td>
+    <td>{{ file.size | number }}B</td>
     <td>{{ file.mimeType }}</td>
     <td>
       <button class="btn btn-danger" (click)="delete.emit(file.key)">Delete</button>

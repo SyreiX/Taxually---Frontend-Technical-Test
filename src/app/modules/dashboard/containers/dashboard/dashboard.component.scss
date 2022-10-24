@@ -4,6 +4,25 @@
   margin: 32px auto;
   flex-direction: column;
 
+  .upload {
+    display: flex;
+    align-items: center;
+
+    .dropzone {
+      width: 80%;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid lightgrey;
+    }
+
+    button {
+      margin-left: auto;
+      height: fit-content;
+    }
+  }
+
   .list-container {
     width: 100%;
 

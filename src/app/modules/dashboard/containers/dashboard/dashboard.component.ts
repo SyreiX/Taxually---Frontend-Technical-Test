@@ -11,14 +11,20 @@ import { File } from '../../definitions/file';
 })
 export class DashboardComponent {
   files$: Observable<File[]> = this.fileService.getFiles$();
+  selectedFiles = [];
 
   viewMode: BehaviorSubject<string> = new BehaviorSubject<string>('list');
 
   constructor(private fileService: FileService) {
   }
 
-  upload(target: any) {
-    this.fileService.uploadFiles(target.files);
+  onFileSelectChange(target: any): void {
+    this.selectedFiles = target.files;
+  }
+
+  upload() {
+    this.fileService.uploadFiles(this.selectedFiles);
+    this.selectedFiles = [];
   }
 
   delete(key: string) {
