@@ -1,3 +1,7 @@
+<div class="header">
+  <button class="btn btn-dark" (click)="logout()">Logout</button>
+</div>
+
 <div class="upload">
   <div class="dropzone" ondrop="onFileSelectChange($event.target)">
     <input type="file" class="file-upload" (change)="onFileSelectChange($event.target)">

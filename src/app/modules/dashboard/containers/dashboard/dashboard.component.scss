@@ -4,6 +4,15 @@
   margin: 32px auto;
   flex-direction: column;
 
+  .header {
+    display: flex;
+    margin-bottom: 24px;
+
+    button {
+      margin-left: auto;
+    }
+  }
+
   .upload {
     display: flex;
     align-items: center;
