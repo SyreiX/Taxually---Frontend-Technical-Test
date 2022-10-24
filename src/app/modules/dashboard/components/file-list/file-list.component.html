@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Size</th>
+    <th scope="col">Type</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let file of files">
+    <td>{{ file.name }}</td>
+    <td>{{ file.size | number }}</td>
+    <td>{{ file.mimeType }}</td>
+    <td>
+      <button class="btn btn-danger" (click)="delete.emit(file.key)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
