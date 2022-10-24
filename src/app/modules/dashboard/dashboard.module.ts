@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FileListComponent } from './components/file-list/file-list.component';
 import { FileGroupComponent } from './components/file-group/file-group.component';
 import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -19,11 +20,12 @@ const routes = [
     FileListComponent,
     FileGroupComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    NgbAccordionModule
-  ]
+	imports: [
+		CommonModule,
+		RouterModule.forChild(routes),
+		NgbAccordionModule,
+		FormsModule
+	]
 })
 export class DashboardModule {
 }
