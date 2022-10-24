@@ -19,9 +19,9 @@ export class FileGroupComponent implements OnInit {
   }
 
   groupFiles() {
-    return this.files.reduce((rv: any, file: File) => {
-      (rv[file.mimeType] = rv[file.mimeType] || []).push(file);
-      return rv;
+    return this.files.reduce((group: any, file: File) => {
+      (group[file.mimeType] = group[file.mimeType] || []).push(file);
+      return group;
     }, {});
   };
 }

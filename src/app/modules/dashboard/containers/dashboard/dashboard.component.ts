@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FileService } from '../../services/file.service';
 import { File } from '../../definitions/file';
 
@@ -9,16 +9,12 @@ import { File } from '../../definitions/file';
   styleUrls: ['./dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardComponent implements OnInit {
-  files$: Observable<File[]> = EMPTY;
+export class DashboardComponent {
+  files$: Observable<File[]> = this.fileService.getFiles$();
 
   viewMode: BehaviorSubject<string> = new BehaviorSubject<string>('list');
 
   constructor(private fileService: FileService) {
-  }
-
-  ngOnInit(): void {
-    this.files$ = this.fileService.getFiles();
   }
 
   upload(target: any) {

@@ -1,13 +1,22 @@
-<input type="file" class="file-upload" (change)="upload($event.target)">
+<div class="upload">
+  <input type="file" class="file-upload" (change)="upload($event.target)">
+  <button class="btn btn-primary">Upload</button>
+</div>
 
-<ng-container *ngIf="files$ | async as files">
+<div *ngIf="files$ | async as files" class="list-container">
   <ng-container *ngIf="files.length">
-    <button class="btn btn-sm" (click)="setViewMode('list')">List</button>
-    <button class="btn btn-sm" (click)="setViewMode('group')">Group</button>
+    <div role="group" class="btn-group view-modes">
+      <button type="button" class="btn btn-sm" (click)="setViewMode('list')">
+        <img src="/assets/images/list.svg" alt="List view" width="32" height="32">
+      </button>
+      <button class="btn btn-sm" (click)="setViewMode('group')">
+        <img src="/assets/images/group.svg" alt="Group view" width="32" height="32">
+      </button>
+    </div>
 
     <ng-container [ngSwitch]="viewMode | async">
       <tax-file-list [files]="files" *ngSwitchCase="'list'" (delete)="delete($event)"></tax-file-list>
       <tax-file-group [files]="files" *ngSwitchCase="'group'" (delete)="delete($event)"></tax-file-group>
     </ng-container>
   </ng-container>
-</ng-container>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, take } from 'rxjs';
 import { File } from '../definitions/file';
 
 const API_URL: string = "https://file.io";
@@ -9,13 +9,19 @@ const API_URL: string = "https://file.io";
   providedIn: 'root'
 })
 export class FileService {
+  private files$: BehaviorSubject<File[]> = new BehaviorSubject<File[]>([]);
 
   constructor(private http: HttpClient) {
+    this.fetchFiles();
   }
 
-  public getFiles(): Observable<File[]> {
+  public getFiles$(): Observable<File[]> {
+    return this.files$;
+  }
+
+  public fetchFiles(): void {
     // @ts-ignore
-    return this.http.get(API_URL).pipe(map(data => data.nodes));
+    return this.http.get(API_URL).pipe(map(data => data.nodes)).pipe(take(1)).subscribe((files: File[]) => this.files$.next(files));
   }
 
   public uploadFiles(files: any): void {
@@ -34,6 +40,8 @@ export class FileService {
   }
 
   public deleteFile(key: string): void {
-    this.http.delete(`${API_URL}/${key}`).subscribe();
+    this.http.delete(`${API_URL}/${key}`).subscribe(res =>{
+      this.files$.next(this.files$.value.filter((file: File) => file.key !== key));
+    });
   }
 }

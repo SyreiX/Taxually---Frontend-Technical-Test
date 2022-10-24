@@ -1,0 +1,16 @@
+:host {
+  width: 80%;
+  display: flex;
+  margin: 32px auto;
+  flex-direction: column;
+
+  .list-container {
+    width: 100%;
+
+    .view-modes {
+      width: 120px;
+      display: flex;
+      margin: 0 0 12px auto;
+    }
+  }
+}
